@@ -1,0 +1,14 @@
+int
+float
+double
+long
+string
+char
+while
+do
+return
+void
+switch
+case
+short
+print

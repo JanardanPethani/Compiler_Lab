@@ -1,0 +1,2 @@
+wether given grammer is left recursion or not
+direct or indirect for both

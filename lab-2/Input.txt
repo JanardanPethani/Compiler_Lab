@@ -1,0 +1,2 @@
+A -> ABc | Ad | d
+B -> Bc | ef

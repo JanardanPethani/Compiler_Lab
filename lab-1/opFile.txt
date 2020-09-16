@@ -1,0 +1,10 @@
+a is identifier
+= is Operator
+2 is Digit
+; is Delimiter
+b is identifier
+, is Delimiter
+c is identifier
+= is Operator
+5 is Digit
+; is Delimiter
