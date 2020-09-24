@@ -1,3 +1,4 @@
+#by Dhynesh Parekh
 import re
 first = []
 d_count = []
@@ -68,15 +69,21 @@ def follow_finder(key):  ##S->Aa/BCD/e,A->CB/a,B->b/#,C->c/#,D->Ad/d/#
         d_count.append(key)
     return follow
     
+
 grammer = input("Enter all productions of grammer seperated by comma: ").split(",")
 production = {}
+dicFirst = {}
+dicFollow = {}
 for i in grammer:
     production[re.split("->",i)[0]] = re.split("->",i)[1]
 print("Given Grammer:\n",production)
 for key in production:
     key_first = first_finder(key)
     print("First(",key,"):",key_first)
+    dicFirst[key] = list(key_first)
     first.clear()
     key_follow = follow_finder(key)
     print("Follow(",key,"):",key_follow)
+    dicFollow[key] = key_follow
     first.clear()    
+
