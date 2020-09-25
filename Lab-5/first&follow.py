@@ -44,6 +44,3 @@ def find_First(productions):
 
     return first
 print(find_First(productions))
-
-def find_follow(productions):
-    

@@ -15,7 +15,7 @@ def first_finder(key):
                 temp = first_finder(re.split("||", k)[i])
                 i += 1
             if re.split("||", k)[i] not in production and not not re.split("||", k)[i]:
-                first.remove('#')
+                if '#' in first :first.remove('#')
                 if re.split("||", k)[i] not in first:
                     first.append(re.split("||", k)[i])
         else:
