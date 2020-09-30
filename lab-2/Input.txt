@@ -1,2 +1,3 @@
-A -> ABc | Ad | d
-B -> Bc | ef
+A -> Br
+B -> Cs
+C -> At

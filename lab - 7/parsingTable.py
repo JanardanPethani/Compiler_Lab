@@ -1,5 +1,5 @@
-# by Dhynesh Parekh
-import re
+# by Dhynesh Parekh and Janardan Pethani
+import re 
 import pandas as pd
 first = []
 d_count = []
@@ -101,8 +101,10 @@ for key in production:
     3.1 if epsilon is there add to follow
 """
 pTable = {}
+is_multiple = False
 for nonTerm in production.keys():
     pTable[nonTerm] = {}
+    is_multiple = False
     for term in terminals:
         pTable[nonTerm][term] = []
         if term in dicFirst[nonTerm]:
@@ -112,30 +114,37 @@ for nonTerm in production.keys():
     if '#' in dicFirst[nonTerm]:
         for term in dicFollow[nonTerm]:
             lst = pTable[nonTerm].get(term, [])
+            if len(lst) != 0:
+                is_multiple = True
+                break
             lst.append('#')
             pTable[nonTerm][term] = lst
+    if is_multiple:
+        break
     
     if '$' not in pTable[nonTerm].keys():
         pTable[nonTerm]['$'] = [] 
 
 
-for key,value in pTable.items():
-    print(key,'-',value)
+# for key,value in pTable.items():
+#     print(key,'-',value)
 
 terminals.append('$')
 columns_ = terminals
 df = pd.DataFrame(columns=columns_,index=production.keys())
 
-print(df)
-for nonTerm in df.index:
-    for terminal in df.columns:
-        # print(nonTerm,terminal,'->',end='')
-        if terminal in production.keys():
-            continue
-        listToStr = '/'.join(map(str, pTable[nonTerm][terminal]))
-        # print(listToStr)
-        df.loc[nonTerm,terminal] = listToStr
-print(df)
+if not is_multiple: 
+    for nonTerm in df.index:
+        for terminal in df.columns:
+            # print(nonTerm,terminal,'->',end='')
+            if terminal in production.keys():
+                continue
+            listToStr = '/'.join(map(str, pTable[nonTerm][terminal]))
+            # print(listToStr)
+            df.loc[nonTerm,terminal] = listToStr
+    print(df)
+else:
+    print('Multiple rules founded\n')
 
 
     
